@@ -1,0 +1,7 @@
+<div class="flex flex-row max-w-sm p-6 bg-white dark:bg-gray-900 border border-gray-200 rounded-lg shadow dark:bg-opacity-70 dark:border-gray-700 dark:hover:bg-opacity-80">
+    <button (click)="toggleTodo(todo)" class="rounded-full mr-2 w-10 h-10 self-start text-white bg-black bg-opacity-50">
+      <ng-icon *ngIf="todo.completed" name="heroCheckSolid"></ng-icon></button>
+  <h5 [ngClass]="{'line-through': todo.completed}" class="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+    {{todo.description}}
+  </h5>
+</div>

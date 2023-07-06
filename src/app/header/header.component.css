@@ -1,0 +1,12 @@
+.spacer {
+    flex: 1;
+}
+
+.header {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background-color: #0000006e;
+    color: white;
+    font-weight: 600;
+}

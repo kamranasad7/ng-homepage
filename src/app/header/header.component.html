@@ -1,0 +1,38 @@
+<div class="header px-20" role="banner">
+    <div class="flex flex-row align-baseline">
+      <h3 class="text-3xl">
+        Welcome
+        <input
+            #usernameField 
+            type="text"
+            [hidden]="!usernameEdit" 
+            (keyup.enter)="saveUsername()" 
+            (blur)="saveUsername()"
+            [(ngModel)]="username"
+            class="backdrop-blur-md bg-transparent w-60"
+        >
+        <span *ngIf="!usernameEdit">{{username}}</span>
+      </h3>
+      <button *ngIf="!usernameEdit" (click)="editUsername()" class="ml-2 hover:backdrop-brightness-150 rounded p-1 text-lg">
+        <ng-icon name="heroPencilSolid"></ng-icon>
+      </button>
+    </div>
+    <div class="spacer"></div>
+    <div class="flex flex-col ">
+      <div class="text-xl">
+        {{currentTime.toLocaleString('default', {weekday: 'long'})}}, {{currentTime.getDate()}} {{currentTime.toLocaleString('default', { month: 'long' })}}
+      </div>
+      <div class="flex flex-row mt-2 text-lg gap-2">
+				<img 
+					class="h-8 w-8"
+					*ngIf="currentWeather" 
+					[src]="currentWeather.current.condition.icon" 
+					alt="Weather icon"
+				>
+				<span>
+					{{currentWeather ? currentWeather.current.temp_c + "&deg; C" : "Fetching weather..."}}
+				</span>
+			</div>
+			<div *ngIf="currentWeather">{{currentWeather.location.name}}, {{currentWeather.location.country}}</div>
+    </div>
+  </div>
