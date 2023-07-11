@@ -15,9 +15,8 @@ main {
 }
 
 .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 0 16px;
+    margin: 0 auto 0 auto;
+    padding-top: 82px;
     max-width: 85%;
-    flex-direction: column;
+    height: 75%;
 }

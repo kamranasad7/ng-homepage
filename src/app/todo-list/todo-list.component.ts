@@ -9,8 +9,27 @@ import { LocalStorageService } from '../services/local-storage.service';
 })
 export class TodoListComponent {
 
-  todos: Todo[] = [new Todo("Imp Task (LL ko tang krna heheh)")]
+  todos: Todo[] = []
 
   constructor(private localStorage: LocalStorageService) { }
 
+  ngOnInit() {
+    this.todos = this.localStorage.getData("todos") ? JSON.parse(this.localStorage.getData("todos")!) : this.todos
+  }
+
+  addTodo(e: Event) {
+    this.todos.push(new Todo(e + ""))
+    this.onSaved()
+  }
+  
+  onDeleted(todo: Todo) {
+    console.log("del event");
+    this.todos = this.todos.filter(t => t != todo)
+    console.log("this.todos: ", this.todos);
+
+  }
+
+  onSaved() {
+    this.localStorage.saveData("todos", JSON.stringify(this.todos))
+  }
 }

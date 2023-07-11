@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
 	selector: 'app-header',
@@ -15,10 +16,10 @@ export class HeaderComponent {
 
 	@ViewChild("usernameField") usernameFieldRef!: ElementRef;
   
-	constructor(private weather: WeatherService) { }
+	constructor(private weather: WeatherService, private localStorage: LocalStorageService) { }
 
 	ngOnInit() {
-		this.username = localStorage.getItem('username') || "User";
+		this.username = this.localStorage.getData('username') || "User";
 		setInterval(() => this.currentTime = new Date(), 1000 * 60);
 
 		navigator.geolocation.getCurrentPosition(this.getWeather)
@@ -35,6 +36,6 @@ export class HeaderComponent {
 
   saveUsername() {
     this.usernameEdit = false;
-		localStorage.setItem('username', this.username)
+		this.localStorage.saveData('username', this.username)
   }
 }

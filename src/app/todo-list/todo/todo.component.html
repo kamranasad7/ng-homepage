@@ -1,7 +1,23 @@
-<div class="flex flex-row max-w-sm p-6 bg-white dark:bg-gray-900 border border-gray-200 rounded-lg shadow dark:bg-opacity-70 dark:border-gray-700 dark:hover:bg-opacity-80">
-    <button (click)="toggleTodo(todo)" class="rounded-full mr-2 w-10 h-10 self-start text-white bg-black bg-opacity-50">
-      <ng-icon *ngIf="todo.completed" name="heroCheckSolid"></ng-icon></button>
+<div class="flex flex-row w-[24rem] p-6 bg-white dark:bg-gray-900 border border-gray-200 rounded-lg shadow dark:bg-opacity-70 dark:border-gray-700 dark:hover:bg-opacity-80">
+  <button (click)="toggleTodo()" class="rounded-full mr-2 w-10 min-w-[2.5rem] min-h-[2.5rem] self-start text-white text-lg bg-black bg-opacity-50 flex justify-center items-center">
+    <ng-icon *ngIf="todo.completed" name="heroCheckSolid"></ng-icon>
+  </button>
   <h5 [ngClass]="{'line-through': todo.completed}" class="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
-    {{todo.description}}
+    <span (dblclick)="editTodo()" *ngIf="!edit" class="transition-all">{{todo.description}}</span>
+    <textarea
+      #editField
+      type="text"
+      [hidden]="!edit"
+      (keydown.enter)="saveTodo($event)"
+      (blur)="saveTodo($event)"
+      [(ngModel)]="todo.description"
+      class="backdrop-blur-md bg-transparent w-[100%]"
+    ></textarea>
+    <div class="flex flex-col">
+      <button (click)="deleteTodo()" *ngIf="edit" class="rounded-full min-w-[2rem] min-h-[2rem] self-end text-white text-lg bg-black bg-opacity-50 flex justify-center items-center">
+        <ng-icon name="heroTrashSolid"></ng-icon>
+      </button>
+    </div>
   </h5>
 </div>
+

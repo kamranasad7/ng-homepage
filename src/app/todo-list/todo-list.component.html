@@ -1,5 +1,19 @@
-<div class="flex flex-row">
-  <h3 class="text-xl text-white mb-4 max-w-sm">TODO LIST</h3>
-  <button class="rounded-full"></button>
+<div class="flex flex-row justify-between text-white">
+  <h3 class="text-xl mb-4">TODO LIST</h3>
+  <button 
+    [swal]="newTaskSwal" 
+    (confirm)="addTodo($event)" 
+    class="rounded-full text-2xl hover:bg-opacity-50 bg-gray-900 bg-opacity-0 mr-2 w-10 min-w-[2.5rem] min-h-[2.5rem] self-start flex justify-center items-center"
+  >
+    <ng-icon name="heroPlusSolid"></ng-icon>
+  </button>
 </div>
-<app-todo *ngFor="let todo of todos" [todo]="todo"></app-todo>
+<swal #newTaskSwal input="text" title="Add New Task" [showCancelButton]="true"></swal>
+<ul class="overflow-auto flex flex-col gap-2">
+  <app-todo 
+    (todoDeleted)="onDeleted($event)"
+    (todoSaved)="onSaved()" 
+    *ngFor="let todo of todos" [todo]="todo"
+  ></app-todo>
+</ul>
+
