@@ -3,16 +3,16 @@
   <button 
     [swal]="newTaskSwal" 
     (confirm)="addTodo($event)" 
-    class="rounded-full text-2xl hover:bg-opacity-50 bg-gray-900 bg-opacity-0 mr-2 w-10 min-w-[2.5rem] min-h-[2.5rem] self-start flex justify-center items-center"
+    class="rounded-full text-2xl hover:bg-opacity-50 bg-gray-900 bg-opacity-0 mr-2 w-10 min-w-[2.5rem] min-h-[2.5rem] self-start flex justify-center items-center transition-all"
   >
     <ng-icon name="heroPlusSolid"></ng-icon>
   </button>
 </div>
 <swal #newTaskSwal input="text" title="Add New Task" [showCancelButton]="true"></swal>
-<ul class="overflow-auto flex flex-col gap-2">
+<ul #todoList class="overflow-auto flex flex-col gap-2 h-full overflow-x-hidden scrollbar-thin scrollbar-thumb-[#00000060] scrollbar-track-transparent scrollbar-thumb-rounded-full">
   <app-todo 
     (todoDeleted)="onDeleted($event)"
-    (todoSaved)="onSaved()" 
+    (todoSaved)="onSaved()"
     *ngFor="let todo of todos" [todo]="todo"
   ></app-todo>
 </ul>

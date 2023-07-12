@@ -35,7 +35,6 @@ export class TodoComponent {
   }
 
   deleteTodo() {
-    console.log("haha");
     this.todoDeleted.emit(this.todo);
   }
 

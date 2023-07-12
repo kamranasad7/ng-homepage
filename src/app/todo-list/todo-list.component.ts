@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, SimpleChanges, ViewChild } from '@angular/core';
 import { Todo } from './todo/todo.model';
 import { LocalStorageService } from '../services/local-storage.service';
 
@@ -10,6 +10,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 export class TodoListComponent {
 
   todos: Todo[] = []
+  @ViewChild("todoList") todoListRef!: ElementRef
 
   constructor(private localStorage: LocalStorageService) { }
 
@@ -17,16 +18,18 @@ export class TodoListComponent {
     this.todos = this.localStorage.getData("todos") ? JSON.parse(this.localStorage.getData("todos")!) : this.todos
   }
 
+  ngAfterViewChecked() {
+    
+  }
+
   addTodo(e: Event) {
     this.todos.push(new Todo(e + ""))
     this.onSaved()
+    setTimeout(() => this.todoListRef.nativeElement.scrollTop = this.todoListRef.nativeElement.scrollHeight, 200)
   }
   
   onDeleted(todo: Todo) {
-    console.log("del event");
     this.todos = this.todos.filter(t => t != todo)
-    console.log("this.todos: ", this.todos);
-
   }
 
   onSaved() {
