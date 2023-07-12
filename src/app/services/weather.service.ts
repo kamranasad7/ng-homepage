@@ -8,7 +8,6 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
 	getWeather = async (position: GeolocationPosition) => {
-    console.log(this);
 		const req = this.http.get(this.weatherAPIURL + `&q=${position.coords.latitude},${position.coords.longitude}`)
 		return await firstValueFrom(req)
 	}

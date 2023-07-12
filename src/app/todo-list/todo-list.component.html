@@ -9,11 +9,10 @@
   </button>
 </div>
 <swal #newTaskSwal input="text" title="Add New Task" [showCancelButton]="true"></swal>
-<ul #todoList class="overflow-auto flex flex-col gap-2 h-full overflow-x-hidden scrollbar-thin scrollbar-thumb-[#00000060] scrollbar-track-transparent scrollbar-thumb-rounded-full">
+<ul #todoList class="overflow-auto flex flex-col gap-2 h-full overflow-x-hidden scrollbar-thin scrollbar-thumb-[#00000060] scrollbar-track-transparent scrollbar-thumb-rounded-full scroll-smooth">
   <app-todo 
     (todoDeleted)="onDeleted($event)"
     (todoSaved)="onSaved()"
     *ngFor="let todo of todos" [todo]="todo"
   ></app-todo>
 </ul>
-
