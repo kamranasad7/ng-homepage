@@ -1,27 +1,22 @@
 # NgHomepage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+This project serves as Homepage for browsers and provides some basic funtionalities like search bar, a todo list and shows current weather.
 
-## Development server
+![What is this](project-preview.png?sanitize=true)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Note:
+This project was originally built for learning concepts of Angular like binding, services, DI, directives, routing etc.
 
-## Code scaffolding
+## Run in Dev Mode
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm start` to start the app in a dev server. App will run on `http://localhost:2234`. 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build files will be stored in the `dist/` directory which can then be deployed for hosting.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## This Project Includes
+  - Built on Angular 16 Framework
+  - Tailwind CSS
+  - Flowbite UI Components
+  - SweetAlert2 for dialogs
