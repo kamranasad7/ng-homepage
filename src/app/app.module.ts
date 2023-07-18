@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { TodoComponent } from './todo-list/todo/todo.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     TodoComponent,
     TodoListComponent,
     SearchBarComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
